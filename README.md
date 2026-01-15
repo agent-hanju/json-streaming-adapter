@@ -1,4 +1,4 @@
-# json-stream-adapter
+# json-streaming-adapter
 
 JSON Schema 기반 스트리밍 어댑터. LLM 응답처럼 토큰 단위로 들어오는 JSON을 실시간으로 파싱하고 증분 델타를 추출합니다.
 
@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.agent-hanju:json-stream-adapter:0.0.1-SNAPSHOT'
+    implementation 'com.github.agent-hanju:json-streaming-adapter:0.0.1-SNAPSHOT'
 
     // 필수 의존성 (직접 추가 필요)
     implementation 'com.fasterxml.jackson.core:jackson-core:2.18.2'
@@ -33,7 +33,7 @@ dependencies {
 
 <dependency>
     <groupId>com.github.agent-hanju</groupId>
-    <artifactId>json-stream-adapter</artifactId>
+    <artifactId>json-streaming-adapter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
 
