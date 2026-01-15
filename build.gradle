@@ -1,0 +1,78 @@
+plugins {
+  id 'java-library'
+  id 'maven-publish'
+}
+
+group = "me.hanju.adapter"
+version = "0.0.1-SNAPSHOT"
+description = "JSON Schema based streaming adapter for incremental JSON parsing"
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+  withSourcesJar()
+  withJavadocJar()
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compileOnly 'com.fasterxml.jackson.core:jackson-core:2.18.2'
+  compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+  compileOnly 'com.networknt:json-schema-validator:1.5.4'
+
+  testImplementation platform('org.junit:junit-bom:5.11.4')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+  testImplementation 'com.fasterxml.jackson.core:jackson-core:2.18.2'
+  testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+  testImplementation 'com.networknt:json-schema-validator:1.5.4'
+  testImplementation 'org.assertj:assertj-core:3.27.6'
+}
+
+tasks.named('test') {
+  useJUnitPlatform()
+}
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+
+      pom {
+        name = 'json-streaming-adapter'
+        description = project.description
+        url = 'https://github.com/agent-hanju/json-streaming-adapter'
+        inceptionYear = '2026'
+
+        licenses {
+          license {
+            name = 'MIT License'
+            url = 'https://opensource.org/licenses/MIT'
+            distribution = 'repo'
+          }
+        }
+
+        developers {
+          developer {
+            id = 'agent-hanju'
+            name = 'hanju'
+            email = 'agent.hanju@gmail.com'
+          }
+        }
+
+        scm {
+          url = 'https://github.com/agent-hanju/json-streaming-adapter'
+          connection = 'scm:git:git://github.com/agent-hanju/json-streaming-adapter.git'
+          developerConnection = 'scm:git:ssh://git@github.com/agent-hanju/json-streaming-adapter.git'
+        }
+
+        issueManagement {
+          system = 'GitHub Issues'
+          url = 'https://github.com/agent-hanju/json-streaming-adapter/issues'
+        }
+      }
+    }
+  }
+}
